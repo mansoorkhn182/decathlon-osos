@@ -21,11 +21,11 @@ class User(db.Model):
 # enable debugging mode
 app.config["DEBUG"] = True
 
+MYDIR = os.path.dirname(__file__)
 # Upload folder
-UPLOAD_FOLDER = os.path.join("/app/static/files")
-print(UPLOAD_FOLDER)
+UPLOAD_FOLDER = '/app/static/files'
 app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
-
+UPLOADS = os.path.join(MYDIR + "/" + app.config['UPLOAD_FOLDER'])
 # Root URL
 @app.route('/')
 def index():
@@ -58,7 +58,7 @@ def procdata():
     username = request.args['username'] 
     user_data = User.query.filter_by(username=username).first()
     filename = user_data.file
-    file_path = UPLOAD_FOLDER+filename
+    file_path = UPLOADS+filename
     data_file = pd.read_csv(file_path,sep=";",header=None)  # load data
     
     ## Data Preparation (add columns to the data)
@@ -69,7 +69,7 @@ def procdata():
     get_scores = decathlon_get_results.scores(data_file)
     
     ## create and save final json file on the server
-    json_file_name = UPLOAD_FOLDER+username+'-'+filename.split('.csv')[0]+'.json'
+    json_file_name = UPLOADS+username+'-'+filename.split('.csv')[0]+'.json'
     with open(json_file_name, 'w') as f:
         json.dump(get_scores, f)
 
