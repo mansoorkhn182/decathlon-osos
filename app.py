@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_file
 import os
 from os.path import join, dirname, realpath
 from flask_sqlalchemy import SQLAlchemy
@@ -79,6 +79,14 @@ def procdata():
     
     return render_template("dataproc.html", fdp = final_data_presentation)
 
+## download file
+@app.route('/download/<path:username>')
+def downloadFile (username):
+    user_data = User.query.filter_by(username=username).first()
+    filename = user_data.file
+    json_file_name = '/DECATHLONTEST/static/files/'+username+'-'+filename.split('.csv')[0]+'.json'
+    
+    return send_file(json_file_name, as_attachment=True)
 
 if (__name__ == "__main__"):
      db.create_all()
