@@ -23,6 +23,7 @@ app.config["DEBUG"] = True
 
 # Upload folder
 UPLOAD_FOLDER = os.path.join("/app/static/files")
+print(UPLOAD_FOLDER)
 app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
 # Root URL
