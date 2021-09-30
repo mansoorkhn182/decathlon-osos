@@ -22,7 +22,7 @@ class User(db.Model):
 app.config["DEBUG"] = True
 
 # Upload folder
-UPLOAD_FOLDER = 'app/static/files'
+UPLOAD_FOLDER = '/app/static/files'
 app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
 # Root URL
