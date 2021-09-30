@@ -16,7 +16,7 @@ db = SQLAlchemy(app)
 ## User table in database which store username and file
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
+    username = db.Column(db.String(80))
     file = db.Column(db.String(80))
 # enable debugging mode
 app.config["DEBUG"] = True
