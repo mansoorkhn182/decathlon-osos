@@ -10,7 +10,7 @@ import json
 app = Flask(__name__)
 
 ## setup database for storing username and filename. Later on can use for authentication
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://miuuyruyjpfwdn:e002c2275ae8e0907aec09017b8c5f6bae7fac14295c9c5f0102c20b1f7ab0b0@ec2-54-216-17-9.eu-west-1.compute.amazonaws.com:5432/dc9l5uuo40ik70'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///decathlon.db'
 db = SQLAlchemy(app)
 
 ## User table in database which store username and file
