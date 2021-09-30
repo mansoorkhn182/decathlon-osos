@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Decathlon Test Competition</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {height: 1500px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+      <h4>Decathlon Test Competition</h4>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="alert alert-success">Hello {{fdp.username}}!</li>
+      </ul><br>
+    </div>
+
+    <div class="col-sm-9">
+      <h4><small>Data Presentation</small></h4>
+      <hr>
+      <h2>Download as <a class="btn btn-success" href="{{fdp.filepath}}" download>{.json}</a></h2>
+      <table class="table">
+        <thead>
+          <th scope="col">Athlets</th>
+          <th scope="col">100 m</th>
+          <th scope="col">Long jump</th>
+          <th scope="col">Shot put</th>
+          <th scope="col">High jump</th>
+          <th scope="col">400 m</th>
+          <th scope="col">110 m hurdles	</th>
+          <th scope="col">Discus throw</th>
+          <th scope="col">Pole vault</th>
+          <th scope="col">Javelin throw</th>
+          <th scope="col">1500 m</th>
+          <th scope="col">Score</th>
+          <th scope="col">Place</th>
+        </thead>
+        {%for i, item in fdp.data %}
+        <tr>
+        <td>{{item['Athlets']}}</td>
+        <td>{{item['100m']}}</td>
+        <td>{{item['Long.jump']}}</td>
+        <td>{{item['Shot.put']}}</td>
+        <td>{{item['High.jump']}}</td>
+        <td>{{item['400m']}}</td>
+        <td>{{item['110m.hurdle']}}</td>
+        <td>{{item['Discus']}}</td>
+        <td>{{item['Pole.vault']}}</td>
+        <td>{{item['Javeline']}}</td>
+        <td>{{item['1500m']}}</td>
+        <td>{{item['scores']}}</td>
+        <td>{{item['place']}}</td>
+         
+        </tr>
+        {%endfor%}
+      </table>
+      <br>
+      
+      <hr>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid">
+  <p>Mansoor Khan</p>
+</footer>
+
+</body>
+</html>
+

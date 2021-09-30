@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Decathlon competition</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/css/intlTelInput.css'>
+<link rel='stylesheet' href='https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<!-- Multi step form --> 
+<section class="multi_step_form">  
+  <form id="msform" method="POST" action="" enctype="multipart/form-data"> 
+    <!-- Tittle -->
+    <div class="tittle">
+      <h2>Decathlon</h2>
+      <p>This app will process a {.csv} file input and produce results in JSON format which will show all the results and places of the athletes in the competition</p>
+    </div>
+    <!-- progressbar -->
+    <ul id="progressbar">
+      <li class="active">Personal Information</li>  
+      <li>Upload Files</li> 
+      <li>Submit all data</li>
+    </ul>
+    <!-- fieldsets -->
+    <fieldset>
+      <h3>Provide your Information</h3>
+      <h6>Write unique username in the given field below. </h6> 
+      <div class="form-row"> 
+        <div class="form-group col-md-12"> 
+          <input type="text" class="form-control" name="username" placeholder="Username" required>
+        </div> 
+      </div> 
+      
+      <button type="button" class="action-button previous_button">Back</button>
+      <button type="button" class="next action-button">Continue</button>  
+    </fieldset>
+    <fieldset>
+      <h3>Upload Files</h3>
+      <h6>Please upload only {.csv} file format</h6>
+      <div class="input-group"> 
+        <div class="custom-file">
+          <input type="file" onchange="fileValidation()" name="file" class="custom-file-input" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="upload">
+          <label class="custom-file-label" for="upload"><i class="ion-android-cloud-outline"></i>Choose file</label>
+        </div>
+        <span id="error"></span>
+      </div>
+      <button type="button" class="action-button previous previous_button">Back</button>
+      <button type="button" id="uploadcontinue" class="next action-button">Continue</button>  
+    </fieldset>  
+    <fieldset>
+      <h3>File Submission</h3>
+      <h6>Click on the Finish button to upload and process your data on server</h6> 
+      <button type="button" class="action-button previous previous_button">Back</button> 
+      <button type="submit" class="action-button">Finish</button> 
+    </fieldset>  
+  </form>  
+</section> 
+<!-- End Multi step form -->
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.2/js/intlTelInput.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js'></script>
+<script  src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
