@@ -7,3 +7,4 @@ pandas==1.1.5
 SQLAlchemy==1.4.25
 Werkzeug==2.0.1
 zipp==3.5.0
+psycopg2
